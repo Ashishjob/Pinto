@@ -259,7 +259,7 @@ app.layout = html.Div([
     html.Div([
         html.H1([
             html.I(className="fas fa-shield-alt"),
-            "System Log Monitor"
+            "SysLogAI"
         ], className="header-title")
     ], className="header"),
     

@@ -47,6 +47,7 @@ def analyze_logs(logs):
 
     for log in logs:
         matched = False
+        # Try to classify log into one of the predefined categories
         for severity, patterns in ANOMALY_PATTERNS.items():
             for pattern in patterns:
                 if re.search(pattern, log, re.IGNORECASE):
@@ -64,8 +65,10 @@ def analyze_logs(logs):
                     break
             if matched:
                 break
+
+        # If no match was found, classify it as 'Info' or other fallback categories
         if not matched:
-            classified["Unclassified"].append(log)
+            classified["Info"].append(log)  # Default classification for unmatched logs
 
     return classified, root_cause_suggestions
 

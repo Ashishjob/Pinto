@@ -30,7 +30,7 @@ def generate_log(timestamp):
     log_message = f"{severity}: Log: {pattern} occurred at {timestamp.strftime('%Y-%m-%d %H:%M:%S')}"
     return log_message
 
-def generate_syslogs(filename, num_logs=100, start_date=None, end_date=None):
+def generate_syslogs(filename, num_logs=50, start_date=None, end_date=None):
     """Generates a file with a given number of syslogs with random timestamps, sorted by time."""
     if not start_date:
         start_date = datetime.now() - timedelta(days=7)  # Default to the last 7 days
@@ -47,7 +47,7 @@ def generate_syslogs(filename, num_logs=100, start_date=None, end_date=None):
             log_message = generate_log(timestamp)
             f.write(f"{log_message}\n")
 
-# Generate 100 random logs and save to syslogs.txt with sorted timestamps
-generate_syslogs("syslogs.txt", num_logs=100)
+# Generate 50 random logs and save to syslogs.txt with sorted timestamps
+generate_syslogs("syslogs.txt", num_logs=50)
 
-# account for more diverse errors like programming errors
+# account for more diverse errors like programming errorsunclass
