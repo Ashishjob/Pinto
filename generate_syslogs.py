@@ -49,3 +49,5 @@ def generate_syslogs(filename, num_logs=100, start_date=None, end_date=None):
 
 # Generate 100 random logs and save to syslogs.txt with sorted timestamps
 generate_syslogs("syslogs.txt", num_logs=100)
+
+# account for more diverse errors like programming errors

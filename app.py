@@ -23,7 +23,7 @@ df = pd.DataFrame(logs_for_dashboard)
 if 'timestamp' not in df.columns:
     df['timestamp'] = pd.date_range(end=datetime.now(), periods=len(df), freq='H')
 
-# The CSS remains the same until the new additions
+# Custom CSS
 app.index_string = '''
 <!DOCTYPE html>
 <html>
@@ -33,27 +33,212 @@ app.index_string = '''
         {%favicon%}
         {%css%}
         <style>
-            /* Previous CSS remains the same */
-            
-            /* Add new CSS for stacked bar chart */
-            .stacked-bar-container {
-                margin-top: 1rem;
+            :root {
+                --critical-color: #ff4757;
+                --warning-color: #ffa502;
+                --info-color: #2e86de;
+                --background-color: #f1f2f6;
+                --card-background: #ffffff;
+                --text-primary: #2f3542;
+                --text-secondary: #747d8c;
             }
             
-            /* Add different background colors for severity in "All" view */
-            .severity-all-critical {
-                background-color: #fff0f0;
-                border-left: 4px solid var(--critical-color);
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                background-color: var(--background-color);
+                color: var(--text-primary);
             }
             
-            .severity-all-warning {
-                background-color: #fff9f0;
-                border-left: 4px solid var(--warning-color);
+            .layout-container {
+                display: grid;
+                grid-template-columns: 300px 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem;
+                max-width: 1800px;
+                margin: 0 auto;
+                height: calc(100vh - 80px);
             }
             
-            .severity-all-info {
-                background-color: #f0f7ff;
-                border-left: 4px solid var(--info-color);
+            .header {
+                background-color: #2f3542;
+                color: white;
+                padding: 1rem 1.5rem;
+            }
+            
+            .header-title {
+                margin: 0;
+                font-size: 1.5rem;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .sidebar {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                height: 100%;
+            }
+            
+            .main-content {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                height: 100%;
+            }
+            
+            .card {
+                background-color: var(--card-background);
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                padding: 1.25rem;
+            }
+            
+            .card-title {
+                font-size: 1.1rem;
+                margin: 0 0 1rem 0;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                color: var(--text-primary);
+            }
+            
+            .stats-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stat-item {
+                background-color: #f8f9fa;
+                padding: 1rem;
+                border-radius: 8px;
+                text-align: center;
+            }
+            
+            .stat-value {
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin-bottom: 0.25rem;
+            }
+            
+            .stat-label {
+                color: var(--text-secondary);
+                font-size: 0.9rem;
+            }
+            
+            .log-container {
+                flex-grow: 1;
+                overflow-y: auto;
+                padding-right: 0.5rem;
+            }
+            
+            .log-entry {
+                padding: 1rem;
+                margin-bottom: 1rem;
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                display: grid;
+                gap: 0.5rem;
+            }
+            
+            .severity-critical { border-left: 4px solid var(--critical-color); }
+            .severity-warning { border-left: 4px solid var(--warning-color); }
+            .severity-info { border-left: 4px solid var(--info-color); }
+            
+            .log-header {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-weight: 500;
+            }
+            
+            .log-content {
+                color: var(--text-primary);
+                line-height: 1.4;
+            }
+            
+            .log-timestamp {
+                color: var(--text-secondary);
+                font-size: 0.9rem;
+            }
+
+            .severity-badge {
+                padding: 0.25rem 0.75rem;
+                border-radius: 12px;
+                font-size: 0.85rem;
+                font-weight: 500;
+            }
+            
+            .badge-critical {
+                background-color: #ffe5e8;
+                color: var(--critical-color);
+            }
+            
+            .badge-warning {
+                background-color: #fff3e0;
+                color: var(--warning-color);
+            }
+            
+            .badge-info {
+                background-color: #e3f2fd;
+                color: var(--info-color);
+            }
+
+            /* Custom scrollbar */
+            .log-container::-webkit-scrollbar {
+                width: 8px;
+            }
+            
+            .log-container::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 4px;
+            }
+            
+            .log-container::-webkit-scrollbar-thumb {
+                background: #cbd5e0;
+                border-radius: 4px;
+            }
+            
+            .log-container::-webkit-scrollbar-thumb:hover {
+                background: #a0aec0;
+            }
+
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0,0.4);
+                padding-top: 60px;
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 5% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
             }
         </style>
     </head>
