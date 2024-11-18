@@ -2,16 +2,31 @@ import random
 import time
 from datetime import datetime, timedelta
 
-# List of log patterns for each severity level
+# Expanded list of log patterns for different categories
 log_patterns = {
     "Critical": [
-        "device unreachable", "port down", "packet loss"
+        "device unreachable", "port down", "packet loss", "system crash", "database connection failed"
     ],
     "Warning": [
-        "high latency", "interface flapping", "cpu overload"
+        "high latency", "interface flapping", "cpu overload", "disk space low", "unresponsive service"
     ],
     "Info": [
-        "login success", "configuration update"
+        "login success", "configuration update", "service restarted", "user created"
+    ],
+    "AppError": [
+        "null pointer exception", "stack overflow error", "out of memory exception", "undefined variable error"
+    ],
+    "NetworkIssue": [
+        "connection timeout", "host unreachable", "DNS resolution failed", "network congestion"
+    ],
+    "SystemFailure": [
+        "hardware malfunction", "kernel panic", "out of disk space", "failed to start service"
+    ],
+    "ProgrammingError": [
+        "syntax error in code", "missing module", "function call failure", "incorrect argument type"
+    ],
+    "PodDown": [
+        "pod crash", "pod unresponsive", "pod deployment failed", "container stopped unexpectedly"
     ]
 }
 
@@ -23,11 +38,26 @@ def generate_random_timestamp(start_date, end_date):
     return random_date
 
 def generate_log(timestamp):
-    """Generates a log message with the provided timestamp."""
+    """Generates a log message with the provided timestamp and varied format."""
     severity = random.choice(list(log_patterns.keys()))
     pattern = random.choice(log_patterns[severity])
-    
-    log_message = f"{severity}: Log: {pattern} occurred at {timestamp.strftime('%Y-%m-%d %H:%M:%S')}"
+
+    # Randomly choose a format based on the severity
+    if severity in ["Critical", "Warning", "Info"]:
+        log_message = f"{severity}: {pattern} occurred at {timestamp.strftime('%Y-%m-%d %H:%M:%S')}"
+    elif severity == "AppError":
+        log_message = f"Application Error - {pattern} at {timestamp.strftime('%Y-%m-%d %H:%M:%S')}"
+    elif severity == "NetworkIssue":
+        log_message = f"Network Issue: {pattern}, Timestamp: {timestamp.strftime('%Y-%m-%d %H:%M:%S')}"
+    elif severity == "SystemFailure":
+        log_message = f"System Failure Detected: {pattern} as of {timestamp.strftime('%Y-%m-%d %H:%M:%S')}"
+    elif severity == "ProgrammingError":
+        log_message = f"Programming Error - {pattern} [timestamp: {timestamp.strftime('%Y-%m-%d %H:%M:%S')}]"
+    elif severity == "PodDown":
+        log_message = f"Pod Down: {pattern} [Time: {timestamp.strftime('%Y-%m-%d %H:%M:%S')}]"
+    else:
+        log_message = f"Unknown Log Type: {pattern} at {timestamp.strftime('%Y-%m-%d %H:%M:%S')}"
+
     return log_message
 
 def generate_syslogs(filename, num_logs=50, start_date=None, end_date=None):
@@ -49,5 +79,3 @@ def generate_syslogs(filename, num_logs=50, start_date=None, end_date=None):
 
 # Generate 50 random logs and save to syslogs.txt with sorted timestamps
 generate_syslogs("syslogs.txt", num_logs=50)
-
-# account for more diverse errors like programming errorsunclass

@@ -1,50 +1,50 @@
-Critical: Log: device unreachable occurred at 2024-11-11 16:09:35
-Info: Log: configuration update occurred at 2024-11-11 18:16:29
-Critical: Log: packet loss occurred at 2024-11-11 19:06:41
-Critical: Log: port down occurred at 2024-11-12 04:18:22
-Warning: Log: interface flapping occurred at 2024-11-12 09:58:22
-Critical: Log: device unreachable occurred at 2024-11-12 12:08:47
-Warning: Log: interface flapping occurred at 2024-11-12 17:37:36
-Info: Log: login success occurred at 2024-11-12 23:30:46
-Info: Log: configuration update occurred at 2024-11-13 06:26:00
-Warning: Log: interface flapping occurred at 2024-11-13 08:39:28
-Info: Log: login success occurred at 2024-11-13 10:05:22
-Info: Log: configuration update occurred at 2024-11-13 16:42:48
-Info: Log: configuration update occurred at 2024-11-13 17:09:23
-Warning: Log: cpu overload occurred at 2024-11-13 19:23:22
-Warning: Log: cpu overload occurred at 2024-11-13 20:00:35
-Critical: Log: port down occurred at 2024-11-13 20:23:15
-Info: Log: login success occurred at 2024-11-13 22:58:38
-Warning: Log: cpu overload occurred at 2024-11-14 00:21:11
-Info: Log: configuration update occurred at 2024-11-14 04:06:06
-Info: Log: configuration update occurred at 2024-11-14 15:11:41
-Info: Log: configuration update occurred at 2024-11-14 15:19:09
-Warning: Log: cpu overload occurred at 2024-11-14 17:32:04
-Warning: Log: high latency occurred at 2024-11-14 22:16:31
-Info: Log: configuration update occurred at 2024-11-15 01:36:00
-Critical: Log: packet loss occurred at 2024-11-15 02:02:04
-Info: Log: login success occurred at 2024-11-15 03:12:35
-Info: Log: configuration update occurred at 2024-11-15 05:15:15
-Critical: Log: port down occurred at 2024-11-15 05:21:55
-Critical: Log: device unreachable occurred at 2024-11-15 05:50:51
-Info: Log: configuration update occurred at 2024-11-15 17:11:56
-Warning: Log: high latency occurred at 2024-11-15 20:29:08
-Info: Log: configuration update occurred at 2024-11-16 00:01:05
-Warning: Log: cpu overload occurred at 2024-11-16 00:39:39
-Info: Log: configuration update occurred at 2024-11-16 01:53:12
-Info: Log: configuration update occurred at 2024-11-16 06:56:02
-Info: Log: configuration update occurred at 2024-11-16 10:21:52
-Info: Log: configuration update occurred at 2024-11-16 10:35:45
-Critical: Log: packet loss occurred at 2024-11-16 20:58:40
-Critical: Log: port down occurred at 2024-11-17 04:27:32
-Info: Log: configuration update occurred at 2024-11-17 04:53:28
-Info: Log: login success occurred at 2024-11-17 10:52:04
-Info: Log: login success occurred at 2024-11-17 11:19:49
-Warning: Log: cpu overload occurred at 2024-11-17 16:58:22
-Warning: Log: interface flapping occurred at 2024-11-17 16:59:38
-Info: Log: login success occurred at 2024-11-17 18:01:33
-Info: Log: login success occurred at 2024-11-17 22:18:20
-Critical: Log: device unreachable occurred at 2024-11-17 23:33:44
-Warning: Log: cpu overload occurred at 2024-11-18 03:10:07
-Warning: Log: interface flapping occurred at 2024-11-18 04:42:30
-Critical: Log: device unreachable occurred at 2024-11-18 12:13:33
+Log: device unreachable occurred at 2024-11-11 16:09:35
+Log: configuration update occurred at 2024-11-11 18:16:29
+Log: packet loss occurred at 2024-11-11 19:06:41
+Log: port down occurred at 2024-11-12 04:18:22
+Log: interface flapping occurred at 2024-11-12 09:58:22
+Log: device unreachable occurred at 2024-11-12 12:08:47
+Log: interface flapping occurred at 2024-11-12 17:37:36
+Log: login success occurred at 2024-11-12 23:30:46
+Log: configuration update occurred at 2024-11-13 06:26:00
+Log: interface flapping occurred at 2024-11-13 08:39:28
+Log: login success occurred at 2024-11-13 10:05:22
+Log: configuration update occurred at 2024-11-13 16:42:48
+Log: configuration update occurred at 2024-11-13 17:09:23
+Log: cpu overload occurred at 2024-11-13 19:23:22
+Log: cpu overload occurred at 2024-11-13 20:00:35
+Log: port down occurred at 2024-11-13 20:23:15
+Log: login success occurred at 2024-11-13 22:58:38
+Log: cpu overload occurred at 2024-11-14 00:21:11
+Log: configuration update occurred at 2024-11-14 04:06:06
+Log: configuration update occurred at 2024-11-14 15:11:41
+Log: configuration update occurred at 2024-11-14 15:19:09
+Log: cpu overload occurred at 2024-11-14 17:32:04
+Log: high latency occurred at 2024-11-14 22:16:31
+Log: configuration update occurred at 2024-11-15 01:36:00
+Log: packet loss occurred at 2024-11-15 02:02:04
+Log: login success occurred at 2024-11-15 03:12:35
+Log: configuration update occurred at 2024-11-15 05:15:15
+Log: port down occurred at 2024-11-15 05:21:55
+Log: device unreachable occurred at 2024-11-15 05:50:51
+Log: configuration update occurred at 2024-11-15 17:11:56
+Log: high latency occurred at 2024-11-15 20:29:08
+Log: configuration update occurred at 2024-11-16 00:01:05
+Log: cpu overload occurred at 2024-11-16 00:39:39
+Log: configuration update occurred at 2024-11-16 01:53:12
+Log: configuration update occurred at 2024-11-16 06:56:02
+Log: configuration update occurred at 2024-11-16 10:21:52
+Log: configuration update occurred at 2024-11-16 10:35:45
+Log: packet loss occurred at 2024-11-16 20:58:40
+Log: port down occurred at 2024-11-17 04:27:32
+Log: configuration update occurred at 2024-11-17 04:53:28
+Log: login success occurred at 2024-11-17 10:52:04
+Log: login success occurred at 2024-11-17 11:19:49
+Log: cpu overload occurred at 2024-11-17 16:58:22
+Log: interface flapping occurred at 2024-11-17 16:59:38
+Log: login success occurred at 2024-11-17 18:01:33
+Log: login success occurred at 2024-11-17 22:18:20
+Log: device unreachable occurred at 2024-11-17 23:33:44
+Log: cpu overload occurred at 2024-11-18 03:10:07
+Log: interface flapping occurred at 2024-11-18 04:42:30
+Log: device unreachable occurred at 2024-11-18 12:13:33
