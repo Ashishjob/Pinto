@@ -2,6 +2,7 @@ import datetime
 from datetime import datetime
 import re
 from collections import defaultdict
+import uuid
 
 # Define patterns for anomaly detection
 ANOMALY_PATTERNS = {
@@ -78,13 +79,13 @@ def get_logs_for_dashboard(file_path):
         for log in logs:
             suggestion, explanation = "No suggestion", "No explanation"
             # If critical or other severities, add suggestions and explanations
-            if severity != "Unclassified":
-                for cause, data in ROOT_CAUSES.items():
-                    if re.search(cause, log, re.IGNORECASE):
-                        suggestion = data['suggestion']
-                        explanation = data['explanation']
-                        break
+            for cause, data in ROOT_CAUSES.items():
+                if re.search(cause, log, re.IGNORECASE):
+                    suggestion = data['suggestion']
+                    explanation = data['explanation']
+                    break
             all_logs.append({
+                'id': str(uuid.uuid4()),  # Add unique ID
                 'log': log,
                 'severity': severity,
                 'suggestion': suggestion,
